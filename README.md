@@ -11,6 +11,8 @@ In this project, the client is 10 Academy; the client would like to solve the ch
 
 
 ## Skills:
+```plain
+
 Building REST and GraphQL APIs
 Building frontend and backend systems
 Connecting with Blockchain Nodes
@@ -19,12 +21,19 @@ Building Web3 dApps
 Extensive unit testing 
 Advanced CI/CD
 
+```
+
 
 
 
 ## Knowledge:
+```plain
+
 Web3 software development framework
 Blockchain and smartcontracts
 
+```
 
+
+## Algorand tech stack
 
