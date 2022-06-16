@@ -28,5 +28,5 @@ In this project, the client is 10 Academy; the client would like to solve the ch
 
 
 ## Algorand tech stack
-![Algorand tech stalk](./images/teckstack.png "Algo tech stalk").
+![Algorand tech stalk](./images/teckstack.PNG "Algo tech stalk").
 
