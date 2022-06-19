@@ -24,3 +24,39 @@ app.config[
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = True
 
 db = SQLAlchemy(app)
+
+
+class Users(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(50), unique=True, nullable=False)
+    password = db.Column(db.String(255), nullable=False)
+    role = db.Column(db.String(50), nullable=False)
+
+
+def token_required(f):
+    @wraps(f)
+    def decorated(*args, **kwargs):
+        token = None
+
+        if "x-access-token" in request.headers:
+            token = request.headers["x-access-token"]
+
+        if not token:
+            return make_response(
+                jsonify({"success": False, "data": "Token missing"}), 403
+            )
+
+        try:
+            data = jwt.decode(
+                token, app.config["SECRET_KEY"], algorithms=["HS256"]
+            )
+            current_user = Users.query.filter_by(id=data["id"]).first()
+        except:
+            return make_response(
+                jsonify({"success": False, "data": "Token is invalid"}), 401
+            )
+
+        # returns the current logged in users contex to the routes
+        return f(current_user, *args, **kwargs)
+
+    return decorated
