@@ -10,8 +10,8 @@ def on_submit(form_data):
 app.set_menu(
     [
         MenuItem('Home', '/', icon="dashboard", children=[
-            MenuItem('10 Academy Staff', '/admin', icon="setting"),
-            MenuItem('Trainee', '/admin', icon="setting")
+            MenuItem('10 Academy Staff', '/', icon="setting"),
+            MenuItem('Trainee', '/trainee_opt_in', icon="setting")
         ]),
         MenuItem('About', '/about', icon="info-circle")
     ]
