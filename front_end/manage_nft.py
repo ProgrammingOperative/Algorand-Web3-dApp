@@ -77,5 +77,19 @@ def check_request(values):
         ])
     ]
 
+@app.page('/trainee_opt_in', 'Form')
+def on_detail(values):
+    return [
+        Form(on_submit = on_submit, content = [
+            TextField('Certificate Request', required_message="populated request", placeholder = "Request prompt"),
+
+            SelectBox('Type', data=['Approve', 'Disapprove'], placeholder="Determine Action"),
+
+            FormActions(content = [
+                SubmitButton('Submit')
+
+            ])
+        ])
+    ]
 
 fastapi_app = app.prepare()
