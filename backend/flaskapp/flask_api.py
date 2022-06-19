@@ -113,3 +113,57 @@ def register():
             202,
         )
 
+
+@app.route("/login", methods=["POST"])
+def login():
+    email = request.json["email"]
+    password = request.json["password"]
+
+    user = Users.query.filter_by(email=email).first()
+
+    if not user:
+        return make_response(
+            jsonify(
+                {
+                    "success": False,
+                    "data": "User not found",
+                }
+            ),
+            404,
+        )
+
+    if bcrypt.check_password_hash(password=password, pw_hash=user.password):
+        token = jwt.encode(
+            {"id": user.id, "email": user.email},
+            app.config["SECRET_KEY"],
+            algorithm="HS256",
+        )
+
+        return make_response(
+            jsonify(
+                {
+                    "success": True,
+                    "data": {
+                        "token": token,
+                        "id": user.id,
+                        "email": user.email,
+                        "role": user.role,
+                    },
+                }
+            ),
+            200,
+        )
+
+    return make_response(
+        jsonify(
+            {
+                "success": False,
+                "data": "Invalid credentials",
+            }
+        ),
+        404,
+    )
+
+
+if __name__ == "__main__":
+    app.run(host="localhost", port=5000, debug=True)
