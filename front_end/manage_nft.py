@@ -80,16 +80,20 @@ def check_request(values):
 @app.page('/trainee_opt_in', 'Form')
 def on_detail(values):
     return [
+
         Form(on_submit = on_submit, content = [
-            TextField('Certificate Request', required_message="populated request", placeholder = "Request prompt"),
-
-            SelectBox('Type', data=['Approve', 'Disapprove'], placeholder="Determine Action"),
-
+            TextField('Certificate Request', required_message="populated request", placeholder = "Input 10 academy staff address containing certificate"),
             FormActions(content = [
-                SubmitButton('Submit')
+                SubmitButton('Request Certificate')
 
             ])
-        ])
+        ]),
+
+        Empty(title=None, content=[], simple_style=False, id=None),
+
+        Result('The program runs successfully! Waiting for certificate')
+
+
     ]
 
 
