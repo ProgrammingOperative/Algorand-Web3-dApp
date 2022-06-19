@@ -25,6 +25,11 @@ def generate_algorand_keypair():
 
 ]
 
-# 
+
+
+# Funded both accounts with 5 Algos each
+
+
+
 
 
