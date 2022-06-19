@@ -60,3 +60,26 @@ def token_required(f):
         return f(current_user, *args, **kwargs)
 
     return decorated
+
+
+    @app.route("/health", methods=["GET"])
+def index():
+    return make_response(
+        jsonify({"timestamp": datetime.now().isoformat()}), 200
+    )
+
+
+@app.route("/protected", methods=["GET"])
+@token_required
+def protected(current_user):
+    return make_response(
+        jsonify(
+            {
+                "success": True,
+                "email": current_user.email,
+                "data": "Viewing protected data!",
+            }
+        ),
+        200,
+    )
+
