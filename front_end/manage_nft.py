@@ -92,4 +92,18 @@ def on_detail(values):
         ])
     ]
 
+
+
+def on_upload(file):
+    print("=== file name will be: ===")
+    print(file['file_name'])
+    print('=== the file is stored in: ===')
+    print(app.uploaded_file_location(file))
+
+
+def on_submit(form_data):
+    print(app.uploaded_file_location(form_data['upload'])) # e.g. the upload component's name is 'upload'
+
+
+
 fastapi_app = app.prepare()
