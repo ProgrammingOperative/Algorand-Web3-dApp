@@ -51,7 +51,7 @@ def form_page():
 
 
         Form(on_submit = on_submit, content = [
-            TextField('Private Key', required_message="Private key required for signing!"),
+            TextField('Private Key', required_message="Private key required for signing!", placeholder = "Input private key to sign"),
             FormActions(content = [
                 SubmitButton('Sign')
             ])
