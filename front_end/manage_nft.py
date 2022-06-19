@@ -61,4 +61,21 @@ def form_page():
     ]
 
 
+
+@app.page('/check_certificate_requests', 'Form')
+def check_request(values):
+    return [
+        Form(on_submit = on_submit, content = [
+            TextField('Certificate Request', required_message="populated request", placeholder = "Request prompt"),
+
+            SelectBox('Type', data=['Approve', 'Disapprove'], placeholder="Determine Action"),
+
+            FormActions(content = [
+                SubmitButton('Submit')
+
+            ])
+        ])
+    ]
+
+
 fastapi_app = app.prepare()
