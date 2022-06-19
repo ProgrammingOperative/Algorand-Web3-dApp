@@ -51,6 +51,7 @@ In this project, the client is 10 Academy; the client would like to solve the ch
 - [Official Algorand Smart Contract Guidelines](https://developer.algorand.org/docs/get-details/dapps/avm/teal/guidelines/)
 - [PyTeal Documentation](https://pyteal.readthedocs.io/en/latest/index.html)
 - [Algorand DevRel Example Contracts](https://github.com/algorand/smart-contracts)
+- [Algorand standard assets](https://developer.algorand.org/docs/get-details/asa/#receiving-an-asset)
 
 
 
