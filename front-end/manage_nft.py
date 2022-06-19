@@ -22,16 +22,16 @@ app.set_menu(
 def form_page():
     return [
 
-        # Card('Upload Form', [
-        #     Upload(on_data=on_upload)  # use Upload individually
-        # ]),
+        Card('Upload Form', [
+            Upload(on_data=on_upload)  # use Upload individually
+        ]),
 
-        # Form(on_submit = on_submit, content = [
-        #     Upload(name='upload', on_data=on_upload),     # embed uploads in a form
-        #     FormActions(content = [
-        #         SubmitButton('Submit File')
-        #     ])
-        # ]),
+        Form(on_submit = on_submit, content = [
+            Upload(name='upload', on_data=on_upload),     # embed uploads in a form
+            FormActions(content = [
+                SubmitButton('Submit File')
+            ])
+        ]),
 
 
         Form(on_submit = on_submit, content = [
