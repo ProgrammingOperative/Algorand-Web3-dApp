@@ -83,3 +83,33 @@ def protected(current_user):
         200,
     )
 
+@app.route("/register", methods=["POST"])
+def register():
+    email = request.json["email"]
+    password = request.json["password"]
+    role = request.json["role"]
+
+    hashed_password = bcrypt.generate_password_hash(password)
+
+    user = Users.query.filter_by(email=email).first()
+
+    if not user:
+        user = Users(email=email, password=hashed_password, role=role)
+
+        db.session.add(user)
+        db.session.commit()
+
+        return make_response(
+            jsonify({"success": True, "data": "Successfully registered"}), 201
+        )
+    else:
+        return make_response(
+            jsonify(
+                {
+                    "success": False,
+                    "data": "User already exists. Please Log in",
+                }
+            ),
+            202,
+        )
+
